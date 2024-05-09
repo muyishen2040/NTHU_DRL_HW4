@@ -3,6 +3,7 @@ import torch
 import torch.nn as nn
 import numpy as np
 import torchvision.transforms as T
+import torch.nn.functional as F
 from torch.distributions import Normal
 import pdb
 from collections import deque
@@ -28,7 +29,12 @@ class ActorNet(nn.Module):
 
 class Agent:
     def __init__(self):
-        self.policy = torch.load('109062312_hw4_data').to('cpu')
+        self.policy = ActorNet(max_action=1.0)
+        self.policy.load_state_dict(torch.load('109062312_hw4_data'))
+        # self.policy = torch.load('109062312_hw4_data').to('cpu')
+        # torch.save(self.policy.state_dict(), 'model_state_dict.pth')
+        # import pdb
+        # pdb.set_trace()
         self.min_action = 0.0
         self.max_action = 1.0
 
