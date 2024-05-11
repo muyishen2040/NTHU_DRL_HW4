@@ -33,7 +33,7 @@ class Agent:
         self.policy.load_state_dict(torch.load('109062312_hw4_data'))
         # self.policy = torch.load('109062312_hw4_data').to('cpu')
         # torch.save(self.policy.state_dict(), 'model_state_dict.pth')
-        # 3
+        # 4
         self.min_action = 0.0
         self.max_action = 1.0
 
